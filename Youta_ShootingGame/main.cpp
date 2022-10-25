@@ -1,12 +1,13 @@
 #include "DxLib.h"
 #include "SceneManager.h"
 #include "GameMainScene.h"
+#include "KeyManager.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPSTR lpCmdLine, int nCmdShow) {
 
 	// タイトルを test に変更
-	SetMainWindowText("ブロック崩し");
+	SetMainWindowText("シューティングゲーム");
 
 	ChangeWindowMode(TRUE);		// ウィンドウモードで起動
 
@@ -27,8 +28,16 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		//g_KeyFlg = g_NowKey & ~g_OldKey;
 		
 			ClearDrawScreen();
+
+			KeyManager::Update();
+			if(KeyManager::OnMousePressed(MOUSE_INPUT_LEFT))
+			{
+				DrawFormatString(200, 200, 0xffffff, "あ");
+			}
+
+			sceneMng.Update();
 			sceneMng.Draw();//シーンの更新処理
-			if (sceneMng.ChangeScene() != nullptr) {
+			if (sceneMng.ChangeScene() == nullptr) {
 
 				DxLib_End();	// DXライブラリ使用の終了処理
 
@@ -37,7 +46,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 			}
 
 				ScreenFlip();
+				
 		}
+
+	DxLib_End();	// DXライブラリ使用の終了処理
+
+	return 0;	// ソフトの終了
 
 }
 
