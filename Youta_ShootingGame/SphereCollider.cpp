@@ -2,12 +2,12 @@
 #include "math.h"
 
 SphereCollider::SphereCollider(T_location location, float radius) {
-
+	
 	this->location.x = location.x;
 	this->location.y = location.y;
 
 	this->radius = radius;
-
+	
 }
 
 	//ƒƒ“ƒo•Ï”‚É•ÏX‚ğ‰Á‚¦‚È‚¢•¨‚Í‚ ‚ç‚©‚¶‚ßconst‚ğ•t‚¯‚Ä‚¨‚­

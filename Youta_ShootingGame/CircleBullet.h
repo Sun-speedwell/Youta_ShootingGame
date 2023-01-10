@@ -1,9 +1,10 @@
 #pragma once
 #include "BulletsBase.h"
-class StraightBullets : public BulletsBase
+class CircleBullet : public BulletsBase
 {
 public:
-	StraightBullets(T_location location);
+	CircleBullet(T_location location, float speed, int degAngle);
+
 public:
 	virtual void Updata() override;
 	virtual void Draw() override;

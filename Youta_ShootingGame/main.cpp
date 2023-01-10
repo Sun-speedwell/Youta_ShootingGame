@@ -2,14 +2,18 @@
 #include "SceneManager.h"
 #include "GameMainScene.h"
 #include "KeyManager.h"
+#include "common.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPSTR lpCmdLine, int nCmdShow) {
 
-	// タイトルを test に変更
+	// タイトルを シューティングゲーム に変更
 	SetMainWindowText("シューティングゲーム");
 
 	ChangeWindowMode(TRUE);		// ウィンドウモードで起動
+
+	SetWindowSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+	SetGraphMode(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_COLOR_BIT_16);
 
 	if (DxLib_Init() == -1) return -1;	// DXライブラリの初期化処理
 
